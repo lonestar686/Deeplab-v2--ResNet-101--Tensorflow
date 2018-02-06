@@ -23,7 +23,7 @@ def configure():
 	flags.DEFINE_float('power', 0.9, 'hyperparameter for poly learning rate')
 	flags.DEFINE_float('momentum', 0.9, 'momentum')
 	flags.DEFINE_string('encoder_name', 'deeplab', 'name of pre-trained model, res101, res50 or deeplab')
-	flags.DEFINE_string('pretrain_file', '../reference model/deeplab_resnet_init.ckpt', 'pre-trained model filename corresponding to encoder_name')
+	flags.DEFINE_string('pretrain_file', './reference_model/deeplab_resnet_init.ckpt', 'pre-trained model filename corresponding to encoder_name')
 	flags.DEFINE_string('data_list', './dataset/train.txt', 'training data list filename')
 
 	# validation
@@ -39,8 +39,8 @@ def configure():
 	flags.DEFINE_boolean('visual', True, 'whether to save predictions for visualization')
 
 	# data
-	flags.DEFINE_string('data_dir', '/tempspace2/zwang6/VOC2012', 'data directory')
-	flags.DEFINE_integer('batch_size', 10, 'training batch size')
+	flags.DEFINE_string('data_dir', './VOC2012', 'data directory')
+	flags.DEFINE_integer('batch_size', 5, 'training batch size')
 	flags.DEFINE_integer('input_height', 321, 'input image height')
 	flags.DEFINE_integer('input_width', 321, 'input image width')
 	flags.DEFINE_integer('num_classes', 21, 'number of classes')
@@ -78,5 +78,5 @@ def main(_):
 
 if __name__ == '__main__':
 	# Choose which gpu or cpu to use
-	os.environ['CUDA_VISIBLE_DEVICES'] = '7'
+	os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 	tf.app.run()
